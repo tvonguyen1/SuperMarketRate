@@ -90,6 +90,14 @@ public class MarketRateDialog extends DialogFragment {
 
             }
         });
+        Button backButton = view.findViewById(R.id.buttonBack);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDialog().dismiss();
+
+            }
+        });
         return view;
 
     }
@@ -97,7 +105,6 @@ public class MarketRateDialog extends DialogFragment {
         SaveRateListener activity = (SaveRateListener) getActivity();
         activity.didFinishMarketRateDialog (rate1,rate2, rate3, rate4, rate5);
         getDialog().dismiss();
-
 
     }
 
