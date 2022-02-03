@@ -143,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements MarketRateDialog.
                         if (wasSuccessful) {
                             int newId = ds.getLastMarketId();
                             currentMarket.setMarketID(newId);
+
                         }
 
                     } else {
