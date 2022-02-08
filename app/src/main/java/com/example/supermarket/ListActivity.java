@@ -30,9 +30,10 @@ public class ListActivity extends AppCompatActivity   {
             RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
             int position = viewHolder.getAdapterPosition();
             int marketId = markets.get(position).getMarketID();
-            FragmentManager fm = getSupportFragmentManager();
-            MarketRateDialog marketRateDialog = new MarketRateDialog();
-            marketRateDialog.show(fm,"MarketRate");
+            Intent intent = new Intent(ListActivity.this, RatingActivity.class);
+            intent.putExtra("marketId", marketId);
+            startActivity(intent);
+
 
 
         }

@@ -13,6 +13,9 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".RatingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListActivity"
             android:exported="true">
             <intent-filter>

@@ -1,14 +1,11 @@
 package com.example.supermarket;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RatingBar;
-import android.content.Intent;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -39,8 +36,6 @@ public class MarketRateDialog extends DialogFragment {
 
 
         final RatingBar liquorRate = view.findViewById(R.id.liquorRate);
-
-
         liquorRate.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rate, boolean b) {

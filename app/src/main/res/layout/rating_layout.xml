@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/liquorView"
+        android:id="@+id/liquorView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -15,7 +14,7 @@
         android:text="Liquor Department" />
 
     <RatingBar
-        android:id="@+id/liquorRate"
+        android:id="@+id/liquorRateIntent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -23,14 +22,14 @@
         android:stepSize="1" />
 
     <TextView
-        android:id="@+id/produceView"
+        android:id="@+id/produceView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="Produce Department" />
 
     <RatingBar
-        android:id="@+id/produceRate"
+        android:id="@+id/produceRateIntent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -38,14 +37,14 @@
         android:stepSize="1" />
 
     <TextView
-        android:id="@+id/meatView"
+        android:id="@+id/meatView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="Meat Department" />
 
     <RatingBar
-        android:id="@+id/meatRate"
+        android:id="@+id/meatRateIntent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -53,14 +52,14 @@
         android:stepSize="1" />
 
     <TextView
-        android:id="@+id/cheeseView"
+        android:id="@+id/cheeseView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="Cheese Department" />
 
     <RatingBar
-        android:id="@+id/cheeseRate"
+        android:id="@+id/cheeseRateIntent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -68,14 +67,14 @@
         android:stepSize="1" />
 
     <TextView
-        android:id="@+id/checkoutView"
+        android:id="@+id/checkoutView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="Ease of Checkout" />
 
     <RatingBar
-        android:id="@+id/checkoutRate"
+        android:id="@+id/checkoutRateIntent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -83,15 +82,7 @@
         android:stepSize="1" />
 
     <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:text="Save"
-        android:visibility="visible" />
-
-    <Button
-        android:id="@+id/buttonBack"
+        android:id="@+id/buttonBack2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
