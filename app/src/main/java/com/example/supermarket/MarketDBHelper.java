@@ -14,11 +14,13 @@ public class MarketDBHelper extends SQLiteOpenHelper {
                     + "marketname text not null, streetaddress text, "
                     + "city text, state text, zipcode text, "
                     + "liquorrate integer,producerate integer, meatrate integer, "
-                    + "cheeserate integer,checkoutrate integer);";
+                    + "cheeserate integer,checkoutrate integer, avgrate double);";
 
     public MarketDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {

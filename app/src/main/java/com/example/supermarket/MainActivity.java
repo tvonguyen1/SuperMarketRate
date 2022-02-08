@@ -2,19 +2,28 @@ package com.example.supermarket;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements MarketRateDialog.SaveRateListener {
     private MarketRate currentMarket;
+
+
 
 
     @Override
@@ -24,8 +33,30 @@ public class MainActivity extends AppCompatActivity implements MarketRateDialog.
         initChangeRateButton();
         initTextChangedEvents();
         initSaveButton();
+        initListButton();
 
         currentMarket = new MarketRate();
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            initMarket(extras.getInt("marketId"));
+        }
+        else {
+            currentMarket = new MarketRate();
+        }
+    }
+
+    private void initListButton() {
+        Button buttonList = findViewById(R.id.list);
+        buttonList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -38,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements MarketRateDialog.
         currentMarket.setMeatRate(rate3);
         currentMarket.setCheeseRate(rate4);
         currentMarket.setCheckoutRate(rate5);
+        currentMarket.setAvgRate((rate1 + rate2 + rate3 + rate4 + rate5)/5.0);
 
 
     }
@@ -49,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements MarketRateDialog.
             public void onClick (View view) {
                 FragmentManager fm = getSupportFragmentManager();
                 MarketRateDialog marketRateDialog = new MarketRateDialog();
+
                 marketRateDialog.show(fm,"MarketRate");
             }
         });
@@ -156,6 +189,34 @@ public class MainActivity extends AppCompatActivity implements MarketRateDialog.
             }
         });
 
+
+    }
+    private void initMarket(int id) {
+
+        MarketDataSource ds = new MarketDataSource(MainActivity.this);
+        try {
+            ds.open();
+            currentMarket = ds.getSpecificMarket(id);
+            ds.close();
+        }
+        catch (Exception e) {
+            Toast.makeText(this, "Load Contact Failed", Toast.LENGTH_LONG).show();
+        }
+
+        EditText editName = findViewById(R.id.nameEdit);
+        EditText editAddress = findViewById(R.id.streetEdit);
+        EditText editCity = findViewById(R.id.cityEdit);
+        EditText editState = findViewById(R.id.editState);
+        EditText editZipCode = findViewById(R.id.zipcodeEdit);
+        TextView rate = findViewById(R.id.resultView);
+
+
+        editName.setText(currentMarket.getMarketName());
+        editAddress.setText(currentMarket.getStreetAddress());
+        editCity.setText(currentMarket.getCity());
+        editState.setText(currentMarket.getState());
+        editZipCode.setText(currentMarket.getZipCode());
+        rate.setText(currentMarket.getAvgRate()+"");
 
     }
 }

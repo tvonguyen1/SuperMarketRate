@@ -2,7 +2,7 @@ package com.example.supermarket;
 
 import java.util.Calendar;
 
-public class MarketRate {
+public class MarketRate  {
     private int marketID;
     private String marketName;
     private String streetAddress;
@@ -14,6 +14,7 @@ public class MarketRate {
     private int meatRate;
     private int cheeseRate;
     private int checkoutRate;
+    private double avgRate;
 
 
     public MarketRate() {
@@ -107,6 +108,14 @@ public class MarketRate {
 
     public void setProduceRate(int produceRate) {
         this.produceRate = produceRate;
+    }
+
+    public double getAvgRate() {
+        return avgRate;
+    }
+
+    public void setAvgRate(double avgRate) {
+        this.avgRate = avgRate;
     }
 }
 
