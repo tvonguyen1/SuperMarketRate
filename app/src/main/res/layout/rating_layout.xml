@@ -82,6 +82,13 @@
         android:stepSize="1" />
 
     <Button
+        android:id="@+id/buttonSave2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:text="Save" />
+
+    <Button
         android:id="@+id/buttonBack2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

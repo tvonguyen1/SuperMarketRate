@@ -23,7 +23,11 @@ public class RatingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rating_layout);
+
+
+
         Bundle extras = getIntent().getExtras();
+
         if(extras != null) {
             initMarket(extras.getInt("marketId"));
         }
@@ -31,7 +35,10 @@ public class RatingActivity extends AppCompatActivity {
             currentMarket = new MarketRate();
         }
         initRateChange();
+        initSaveButton();
         initBackButton();
+
+
 
 
     }
@@ -92,27 +99,48 @@ public class RatingActivity extends AppCompatActivity {
             }
 
         });
-
         avgRating = (currentMarket.getLiquorRate() + currentMarket.getProduceRate() + currentMarket.getCheeseRate()
                 + currentMarket.getMeatRate() + currentMarket.getCheckoutRate())/5.0;
         currentMarket.setAvgRate(avgRating);
 
 
+
+
     }
-    private void initBackButton() {
-        Button backButton = findViewById(R.id.buttonBack2);
-        backButton.setOnClickListener(new View.OnClickListener() {
+    private void initSaveButton() {
+
+        Button saveButton = findViewById(R.id.buttonSave2);
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 boolean wasSuccessful;
                 MarketDataSource ds = new MarketDataSource(RatingActivity.this);
                 try {
                     ds.open();
-                    wasSuccessful = ds.updateMarketRate(currentMarket);
+                    if (currentMarket.getMarketID() == -1) {
+                        wasSuccessful = ds.insertMarketRate(currentMarket);
+                        if (wasSuccessful) {
+                            int newId = ds.getLastMarketId();
+                            currentMarket.setMarketID(newId);
+
+                        }
+
+                    } else {
+                        wasSuccessful = ds.updateMarketRate(currentMarket);
+                    }
                     ds.close();
                 } catch (Exception e) {
                     wasSuccessful = false;
                 }
+
+            }
+        });
+    }
+    private void initBackButton() {
+        Button backButton = findViewById(R.id.buttonBack2);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent intent = new Intent(RatingActivity.this, ListActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
